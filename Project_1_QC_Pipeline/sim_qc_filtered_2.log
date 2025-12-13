@@ -1,0 +1,28 @@
+PLINK v1.90b7.2 64-bit (11 Dec 2023)
+Options in effect:
+  --bfile sim_qc_filtered_1
+  --maf 0.01
+  --make-bed
+  --out sim_qc_filtered_2
+
+Hostname: DESKTOP-AMKQ5VR
+Working directory: /home/mohammad/gwas_project/scripts/r
+Start time: Thu Dec 11 01:14:54 2025
+
+Random number seed: 1765403094
+4655 MB RAM detected; reserving 2327 MB for main workspace.
+6404 variants loaded from .bim file.
+500 people (500 males, 0 females) loaded from .fam.
+500 phenotype values loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 500 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.664198.
+0 variants removed due to minor allele threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+6404 variants and 500 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to sim_qc_filtered_2.bed + sim_qc_filtered_2.bim +
+sim_qc_filtered_2.fam ... done.
+
+End time: Thu Dec 11 01:14:54 2025
