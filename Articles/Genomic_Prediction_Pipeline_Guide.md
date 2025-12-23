@@ -72,5 +72,39 @@ Knowing this number is critical for designing any effective breeding program and
 # Example GCTA command for GREML analysis
 # This command uses the GRM we already made, reads a phenotype file, and runs the REML analysis.
 gcta64 --grm [output_prefix_for_grm] --pheno [your_phenotype_file.txt] --reml --out [output_prefix_for_heritability]
+## Phase 4: The Payoff - Predicting Genomic Breeding Values (GEBVs)
+
+This is the grand finale. All our previous work—the meticulous cleaning, the complex relationship mapping, and the insightful heritability estimation—has been leading to this single moment: predicting the genetic merit of each individual.
+
+**The "Why":** The Genomic Estimated Breeding Value (GEBV) is the "money number." It is a single, powerful score that represents the total genetic potential of an animal for a specific trait, based on its entire genome. Unlike traditional breeding values based on pedigree, GEBVs are more accurate and can be calculated for young animals, even before they express the trait themselves. This allows breeders to make selection decisions earlier, more accurately, and with far greater confidence, dramatically accelerating the rate of genetic improvement.
+
+**The "How":** We use a method called **GBLUP (Genomic Best Linear Unbiased Prediction)**, which is also implemented within GCTA. This method brilliantly combines all our previous inputs:
+1.  It uses the **Phenotype file** to know the performance of all animals.
+2.  It uses the **GRM** to understand the complex web of relationships between them.
+3.  It uses the **Heritability estimate (h²)** from our GREML analysis to properly weight the importance of genetics versus environment.
+
+By putting these three pieces together, the GBLUP model predicts the breeding value for every single individual.
+
+```bash
+# Example GCTA command for GBLUP analysis to calculate GEBVs
+# This command leverages the GRM and phenotype data to run the BLUP procedure.
+gcta64 --reml-blup [your_heritability_output_prefix] --grm [output_prefix_for_grm] --pheno [your_phenotype_file.txt] --out [final_output_prefix]
+## Phase 4: The Payoff - Predicting Genomic Breeding Values (GEBVs)
+
+This is the grand finale. All our previous work—the meticulous cleaning, the complex relationship mapping, and the insightful heritability estimation—has been leading to this single moment: predicting the genetic merit of each individual.
+
+**The "Why":** The Genomic Estimated Breeding Value (GEBV) is the "money number." It is a single, powerful score that represents the total genetic potential of an animal for a specific trait, based on its entire genome. Unlike traditional breeding values based on pedigree, GEBVs are more accurate and can be calculated for young animals, even before they express the trait themselves. This allows breeders to make selection decisions earlier, more accurately, and with far greater confidence, dramatically accelerating the rate of genetic improvement.
+
+**The "How":** We use a method called **GBLUP (Genomic Best Linear Unbiased Prediction)**, which is also implemented within GCTA. This method brilliantly combines all our previous inputs:
+1.  It uses the **Phenotype file** to know the performance of all animals.
+2.  It uses the **GRM** to understand the complex web of relationships between them.
+3.  It uses the **Heritability estimate (h²)** from our GREML analysis to properly weight the importance of genetics versus environment.
+
+By putting these three pieces together, the GBLUP model predicts the breeding value for every single individual.
+
+```bash
+# Example GCTA command for GBLUP analysis to calculate GEBVs
+# This command leverages the GRM and phenotype data to run the BLUP procedure.
+gcta64 --reml-blup [your_heritability_output_prefix] --grm [output_prefix_for_grm] --pheno [your_phenotype_file.txt] --out [final_output_prefix]
 ---
 
