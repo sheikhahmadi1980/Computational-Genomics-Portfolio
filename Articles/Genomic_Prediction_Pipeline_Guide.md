@@ -56,5 +56,21 @@ Now that we have a clean dataset, we move from treating individuals as isolated 
 # Example GCTA command to build the GRM
 # This command tells GCTA to use our cleaned data (--bfile) and generate the relationship matrix.
 gcta64 --bfile [your_clean_data_prefix] --make-grm --out [output_prefix_for_grm]
+## Phase 3: The Million-Dollar Question - Estimating Heritability (h²)
+
+With a clean dataset and a complete map of genomic relationships (the GRM), we are finally ready to ask our first, and arguably most important, biological question: How much of the variation we see in our trait of interest is actually controlled by genetics? This is the concept of **SNP-based heritability (h²)**.
+
+**The "Why":** Heritability is the "volume knob" of genetic progress. It's a value between 0 and 1 that tells us the proportion of total phenotypic variance (Vp) that can be explained by genetic variance (Vg).
+*   A high heritability (e.g., > 0.4) suggests that genetics plays a major role in the trait. This is fantastic news, as it means our efforts in genomic selection are likely to be highly effective.
+*   A low heritability (e.g., < 0.1) suggests that environmental factors are the main drivers of the trait, and achieving genetic gain will be a slow, difficult process.
+
+Knowing this number is critical for designing any effective breeding program and managing expectations.
+
+**The "How":** We use a powerful statistical method called **GREML (Genomic Restricted Maximum Likelihood)**, implemented within GCTA. In simple terms, GREML takes two key inputs—the GRM (which tells it "who is related to whom") and the phenotype file (which tells it the trait measurements for each individual)—and cleverly partitions the variance to estimate the contribution of genetics.
+
+```bash
+# Example GCTA command for GREML analysis
+# This command uses the GRM we already made, reads a phenotype file, and runs the REML analysis.
+gcta64 --grm [output_prefix_for_grm] --pheno [your_phenotype_file.txt] --reml --out [output_prefix_for_heritability]
 ---
 
